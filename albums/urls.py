@@ -1,13 +1,14 @@
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
 from django.urls import path
 
 from . import views
 from songs import views as song_views
 
-from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
-
 urlpatterns = [
     path("albums/", views.AlbumView.as_view()),
     path("albums/<int:pk>/songs/", song_views.SongView.as_view()),
+
+    # Doc
     # Acessa o download do schema
     path('schema/', SpectacularAPIView.as_view(), name='schema'),
     # Opcionais

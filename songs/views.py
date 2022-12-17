@@ -1,14 +1,12 @@
-from django.shortcuts import get_object_or_404
-from rest_framework.views import APIView, Response, status
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from .models import Song
-from rest_framework.pagination import PageNumberPagination
+from rest_framework.generics import ListCreateAPIView
+from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404
 from .serializers import SongSerializer
 from albums.models import Album
-from rest_framework.generics import ListCreateAPIView
+from .models import Song
 import ipdb
-from django.shortcuts import get_object_or_404
 
 
 class SongView(ListCreateAPIView):
@@ -20,7 +18,7 @@ class SongView(ListCreateAPIView):
     def perform_create(self, serializer):
         album_id = self.kwargs["pk"]
         album = get_object_or_404(Album, pk=album_id)
-        return serializer.save(album=album)
+        serializer.save(album=album)
 
     # def get(self, request, pk):
     #     """
