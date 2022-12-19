@@ -36,7 +36,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", get_random_secret_key())
 DEBUG = True
 
 ALLOWED_HOSTS = ["web-production-86ca.up.railway.app", "0.0.0.0"]
-CSRF = ["https://web-production-86ca.up.railway.app"]
+CSRF = ["https://web-production-86ca.up.railway.app", "0.0.0.0"]
 
 # Application definition
 DJANGO_APPS = [
